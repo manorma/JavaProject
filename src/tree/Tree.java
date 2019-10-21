@@ -1,5 +1,7 @@
 package tree;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Stack;
 
 class Node{
@@ -124,41 +126,75 @@ public class Tree {
 
     }
 
-    //print spiral
-    private void printSpiral(Node root){
-        if(root == null){
-            return;
+    private int[][] convertArrrayListToArray(ArrayList<ArrayList<Integer>> arrayList){
+        int s = arrayList.size();
+        int[][] ret = new int[s][];
+        Iterator<ArrayList<Integer>> iterator1 = arrayList.listIterator();
+        int j=0;
+        while (iterator1.hasNext()){
+            ArrayList<Integer> innerList = iterator1.next();
+            Iterator<Integer> iterator2 = innerList.listIterator();
+            int ins = innerList.size();
+            int[] innerArray = new int[ins];
+            int i=0;
+            while (iterator2.hasNext()){
+                innerArray[i] = iterator2.next();
+                i++;
+            }
+            ret[j] = innerArray;
+            j++;
         }
+        return ret;
+    }
+
+    //print spiral
+    private int[][] printSpiral(Node root){
+//        if(root == null){
+//            return;
+//        }
+
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         Stack<Node> s1=new Stack<>();
         Stack<Node> s2=new Stack<>();
         s1.push(root);
         while(!s1.isEmpty() || !s2.isEmpty()){
+            ArrayList<Integer> temp1 = new ArrayList<>();
             while(!s1.isEmpty()){
                 Node top = s1.peek();
                 s1.pop();
-                System.out.println(top.data+" ");
-                if(top.right != null){
-                    s2.push(top.right);
-                }
+                temp1.add(top.data);
+                //System.out.println(top.data+" ");
                 if(top.left != null){
                     s2.push(top.left);
                 }
+                if(top.right != null){
+                    s2.push(top.right);
+                }
 
             }
-
+            result.add(temp1);
+            //System.out.print(temp1);
+            ArrayList<Integer> temp2 = new ArrayList<>();
             while(!s2.isEmpty()){
                 Node top = s2.peek();
                 s2.pop();
-                System.out.println(top.data+" ");
-                if(top.left != null){
-                    s1.push(top.left);
-                }
+                temp2.add(top.data);
+                //System.out.println(top.data+" ");
                 if(top.right != null){
                     s1.push(top.right);
                 }
+                if(top.left != null){
+                    s1.push(top.left);
+                }
 
             }
+            result.add(temp2);
+            //System.out.print(temp2);
         }
+        //System.out.print(result);
+        return convertArrrayListToArray(result);
+
+
     }
     // check tree is mirror of itself or other tree
     private boolean isMirror(Node root1,Node root2){
@@ -244,8 +280,15 @@ public class Tree {
 
 
         //System.out.println("height of tree is "+tree.height(tree.root));
-        //System.out.println("Spiral Form : ");
-        //tree.printSpiral(tree.root);
+        System.out.println("Spiral Form : ");
+        int[][] res = tree.printSpiral(tree.root);
+        for(int i = 0;i<res.length ;i ++){
+            for(int j =0;j<res[i].length;j++){
+                System.out.print(res[i][j]);
+            }
+            System.out.print("\n");
+        }
+        //System.out.print(tree.printSpiral(tree.root));
   //      System.out.println("inorder of tree:\n");
 
  //       tree.inorderUsingStack(tree.root);
@@ -256,17 +299,17 @@ public class Tree {
 //        System.out.println("postorder of tree:\n");
 //        tree.postorder(tree.root);
 
-        System.out.println("Left view of tree: ");
-        tree.leftView(tree.root);
-        tree.prevLevel.prev_level = 0;
-        System.out.println("Right View of tree: ");
-        tree.rightView(tree.root);
-        if(tree.isBST()) {
-            System.out.println("is BST");
-        }
-        else {
-            System.out.println("is not BST");
-        }
+//        System.out.println("Left view of tree: ");
+//        tree.leftView(tree.root);
+//        tree.prevLevel.prev_level = 0;
+//        System.out.println("Right View of tree: ");
+//        tree.rightView(tree.root);
+//        if(tree.isBST()) {
+//            System.out.println("is BST");
+//        }
+//        else {
+//            System.out.println("is not BST");
+//        }
 
 
     }

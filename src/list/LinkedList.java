@@ -32,7 +32,6 @@ public class LinkedList {
         while (curr.next != null) {
             curr = curr.next;
         }
-        curr.next = node;
         return root;
     }
 

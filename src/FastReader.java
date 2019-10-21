@@ -44,4 +44,9 @@ public class FastReader {
 
         return st;
     }
+
+    public static void main(String[] args){
+        Person p = Person.builder().addName("Manorma").addId("H323034").build();
+        System.out.println(p.toString());
+    }
 }

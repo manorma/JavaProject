@@ -37,10 +37,7 @@ class Rectangle extends Shape{
         return this.x*x;
     }
 
-    public void getArea(int x){
-        System.out.println("Rectangle getArea "+this.x*x);
 
-    }
 
     public static void getClassName(){
         System.out.print("Rectangle");

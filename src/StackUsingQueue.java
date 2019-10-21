@@ -1,8 +1,9 @@
 import java.util.LinkedList;
+import java.util.Observer;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class StackUsingQueue {
+public class StackUsingQueue  {
 
     private static class MyStack<T> {
 
@@ -56,11 +57,12 @@ public class StackUsingQueue {
 
     }
 
+
+
     public static void main(String[] args){
         MyStack<Integer> myStack = new MyStack<>();
         Scanner scanner = new Scanner(System.in);
         int numOfOperation = scanner.nextInt();
-
         for(int i=0;i<numOfOperation;i++){
             int op = scanner.nextInt();
             if(op == 1){
