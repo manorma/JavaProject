@@ -59,13 +59,14 @@ public class Tree {
         if(root == null){
             return 0;
         }
-        int l = height(root.left);
-        int r = height(root.right);
-        if(l>r){
-            return l+1;
-        }else {
-            return r+1;
-        }
+//        int l = height(root.left);
+//        int r = height(root.right);
+//        if(l>r){
+//            return l+1;
+//        }else {
+//            return r+1;
+//        }
+        return 1+Math.max(height(root.left),height(root.right));
     }
 
     private void inorder(Node root){
@@ -279,15 +280,15 @@ public class Tree {
 
 
 
-        //System.out.println("height of tree is "+tree.height(tree.root));
-        System.out.println("Spiral Form : ");
-        int[][] res = tree.printSpiral(tree.root);
-        for(int i = 0;i<res.length ;i ++){
-            for(int j =0;j<res[i].length;j++){
-                System.out.print(res[i][j]);
-            }
-            System.out.print("\n");
-        }
+        System.out.println("height of tree is "+tree.height(tree.root));
+//        System.out.println("Spiral Form : ");
+//        int[][] res = tree.printSpiral(tree.root);
+//        for(int i = 0;i<res.length ;i ++){
+//            for(int j =0;j<res[i].length;j++){
+//                System.out.print(res[i][j]);
+//            }
+//            System.out.print("\n");
+//        }
         //System.out.print(tree.printSpiral(tree.root));
   //      System.out.println("inorder of tree:\n");
 

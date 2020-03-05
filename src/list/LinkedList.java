@@ -32,6 +32,7 @@ public class LinkedList {
         while (curr.next != null) {
             curr = curr.next;
         }
+        curr.next = node;
         return root;
     }
 
@@ -138,6 +139,24 @@ public class LinkedList {
         }
 
     }
+
+    private void deleteNode(Node delNode){
+        Node temp = delNode;
+        temp.data = temp.next.data;
+        temp.next = temp.next.next;
+
+    }
+    private void deleteNodeWithoutHead(int d){
+        Node curr = root;
+        while(curr.next != null){
+            if(curr.data == d){
+                deleteNode(curr);
+                return;
+            }
+            curr = curr.next;
+        }
+
+    }
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
         linkedList.addNode(4);
@@ -153,7 +172,10 @@ public class LinkedList {
         //linkedList.reverseList();
         //linkedList.pairWiseSwap();
         //linkedList.printList();
-        linkedList.printNthNode(6);
+        //linkedList.printNthNode(6);
+        linkedList.deleteNodeWithoutHead(4);
+        System.out.println("print node after deleting");
+        linkedList.printList();
         System.out.println("Middle Element "+linkedList.findMiddle());
 
     }

@@ -5,7 +5,7 @@ import java.util.*;
 //If the required page is not in the memory, we bring that in memory. In simple words, we add a new node to the front of the queue and update the corresponding node address in the hash. If the queue is full, i.e. all the frames are full, we remove a node from the rear of queue, and add the new node to the front of queue.
 public class LRUCache {
     private int csize;
-    private Deque<Integer> dq;
+    private Queue<Integer> dq;
     private HashSet<Integer> map;
     LRUCache(int size){
         this.csize = size;
@@ -20,7 +20,7 @@ public class LRUCache {
             //queue size is full
             if(dq.size() == csize){
                 System.out.println("size is full "+page);
-                int key = dq.removeLast();
+                int key = dq.remove();
                 map.remove(key);
 
             }
@@ -31,7 +31,7 @@ public class LRUCache {
             dq.remove(page);
             display();
         }
-        dq.push(page);//add an element to head
+        dq.add(page);//add an element to head
         map.add(page);
 
     }
